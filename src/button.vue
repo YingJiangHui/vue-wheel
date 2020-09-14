@@ -1,9 +1,16 @@
 <template>
-    <button class="w-button">button</button>
+    <button class="w-button" name="todo">
+        <slot/>
+    </button>
 </template>
 
 <script lang='ts'>
   export default {
+    date(){
+      return {
+        todo:'123'
+      }
+    }
   };
 
 </script>
@@ -17,17 +24,18 @@
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background: var(--button-bg);
+        &:hover {
+            color: var(--button-hover-color);
+        }
+
+        &:active {
+            background: var(--button-active-bg);
+        }
+
+        &:focus {
+            outline: none;
+        }
     }
 
-    .w-button:hover {
-        color: var(--button-hover-color);
-    }
 
-    .w-button:active {
-        background: var(--button-active-bg);
-    }
-
-    .w-button:focus {
-        outline: none;
-    }
 </style>
