@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Button from './button.vue'
-Vue.component('w-button',Button)
-new Vue({
-
-}).$mount('#app')
+import Icon from './Icon.vue'
+Vue.component('w-button', Button)
+Vue.component('w-icon', Icon)
+new Vue({}).$mount('#app')

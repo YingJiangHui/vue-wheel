@@ -1,15 +1,28 @@
 <template>
     <button class="w-button" name="todo">
-        <slot/>
+      <template >
+        <g-icon :name="icon"/>
+      </template>
+        <div class="content">
+          <slot></slot>
+        </div>
     </button>
 </template>
 
 <script lang='ts'>
+  import Icon from './Icon.vue';
+
   export default {
-    date(){
-      return {
-        todo:'123'
+    mounted(){
+      console.log(this.icon)
+    },
+    props:{
+      icon:{
+        type:String
       }
+    },
+    components: {
+      'g-icon':Icon
     }
   };
 
@@ -17,6 +30,12 @@
 
 <style lang="scss" scoped>
     .w-button {
+        & {
+          display: inline-flex;justify-content: center;align-items: center;
+        }
+        &>.content{
+          margin-left: 0.3em;
+        }
         font: inherit;
         font-size: var(--font-size);
         height: var(--button-height);
@@ -24,6 +43,7 @@
         border-radius: var(--border-radius);
         border: 1px solid var(--border-color);
         background: var(--button-bg);
+
         &:hover {
             color: var(--button-hover-color);
         }
