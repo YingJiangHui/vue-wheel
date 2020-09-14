@@ -13,7 +13,7 @@
             box-sizing: border-box;
         }
         :root {
-            --button-height: 32px;
+            --button-height: 320px;
             --font-size: 14px;
             --color: #333;
             --button-bg: #fff;
@@ -23,35 +23,9 @@
             --button-hover-color:#666;
         }
     </style>
-    <style>
-        .w-button{
-            font:inherit;
-            font-size: var(--font-size);
-            height: var(--button-height);
-            padding: 0 1em;
-            border-radius: var(--border-radius);
-            border: 1px solid var(--border-color);
-            background: var(--button-bg);
-        }
-        .w-button:hover{
-            color: var(--button-hover-color);
-        }
-        .w-button:active{
-            background: var(--button-active-bg);
-        }
-        .w-button:focus{
-            outline: none;
-        }
-    </style>
 </head>
 <body>
-<div id="app"><w-button></w-button></div>
-<script src="node_modules/vue/dist/vue.min.js"></script>
-<script src="w-button.js"></script>
-<script>
-    new Vue({
-
-    }).$mount('#app')
-</script>
+<div id="app"><w-button /></div>
+<script src="src/app.js"></script>
 </body>
 </html>
