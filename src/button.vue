@@ -4,7 +4,7 @@
             <w-icon class="icon" :name="icon" v-if="icon && !loading"/>
         </template>
         <template>
-            <w-icon class="icon loading" name="loading" v-if="loading" />
+            <w-icon class="icon loading" name="loading" v-if="loading"/>
         </template>
         <div class="content">
             <slot></slot>
@@ -27,8 +27,8 @@
           return value === 'left' || value === 'right';
         }
       },
-      loading:{
-        type:Boolean,
+      loading: {
+        type: Boolean,
         default: false,
       }
     },
@@ -41,13 +41,14 @@
 
 <style lang="scss" scoped>
     @keyframes spin {
-        0%{
+        0% {
             transform: rotate(0);
         }
-        100%{
+        100% {
             transform: rotate(360deg);
         }
     }
+
     .w-button {
         vertical-align: middle;
 
@@ -76,9 +77,11 @@
         &:focus {
             outline: none;
         }
-        &>.loading{
-            animation:spin 1.2s infinite linear;
+
+        & > .loading {
+            animation: spin 1.2s infinite linear;
         }
+
         &.icon-left {
             .icon {
                 order: 1;

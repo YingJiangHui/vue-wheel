@@ -16,7 +16,10 @@
         display: inline-flex;
         > .w-button {
             border-radius: 0;
-
+            &:active,&:focus,&:hover{
+                position: relative;
+                z-index: 1;
+            }
             &:not(:first-child) {
                 margin-left: -1px;
             }
