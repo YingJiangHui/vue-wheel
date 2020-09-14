@@ -1,10 +1,14 @@
 <template>
     <button class="w-button" name="todo" :class="{[`icon-${iconPosition}`]: true}">
-      <template v-if="icon">
-        <g-icon :name="icon"/>
-      </template>
+        <template>
+            <w-icon class="icon" :name="icon" v-if="icon && !loading"/>
+        </template>
+        <template>
+            <w-icon class="icon loading" name="loading" v-if="loading" />
+
+        </template>
         <div class="content">
-          <slot></slot>
+            <slot></slot>
         </div>
     </button>
 </template>
@@ -13,30 +17,45 @@
   import Icon from './Icon.vue';
 
   export default {
-    props:{
-      icon:{
-        type:String
+    props: {
+      icon: {
+        type: String
       },
-      iconPosition:{
-        type:String,
-        default:'left',
-        validator(value){
-          return value==='left'||value==='right'
+      iconPosition: {
+        type: String,
+        default: 'left',
+        validator(value) {
+          return value === 'left' || value === 'right';
         }
+      },
+      loading:{
+        type:Boolean,
+        default: false,
       }
     },
     components: {
-      'g-icon':Icon
+      'w-icon': Icon
     }
   };
 
 </script>
 
 <style lang="scss" scoped>
+    @keyframes spin {
+        0%{
+            transform: rotate(0);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
     .w-button {
         vertical-align: middle;
+
         & {
-          display: inline-flex;justify-content: center;align-items: center;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
         }
 
         font: inherit;
@@ -58,21 +77,27 @@
         &:focus {
             outline: none;
         }
-        &.icon-left{
-            .icon{
+        &>.loading{
+            animation:spin 1.2s infinite linear;
+        }
+        &.icon-left {
+            .icon {
                 order: 1;
                 margin-right: .3em;
             }
-            .content{
+
+            .content {
                 order: 2;
             }
         }
-        &.icon-right{
-            .icon{
+
+        &.icon-right {
+            .icon {
                 order: 2;
                 margin-left: .3em;
             }
-            .content{
+
+            .content {
                 order: 1;
             }
         }
