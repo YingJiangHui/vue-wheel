@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>轱辘</title>
     <script src="//at.alicdn.com/t/font_2065853_n4j649fm2ud.js"></script>
@@ -11,14 +12,14 @@
         body {
             padding: 24px;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-         :root {
+
+        :root {
             --button-height: 32px;
             --font-size: 14px;
             --color: #333;
@@ -32,21 +33,21 @@
 </head>
 
 <body>
-    <div id="app">
-        <w-button>按钮</w-button>
-        <w-button icon="setting" :loading="loading1" @click="loading1=!loading1">按钮</w-button>
-        <w-button icon="setting" icon-position="right" :loading="loading2" @click="loading2=!loading2">按钮</w-button>
-        <w-button icon="setting" icon-position="left" :loading="loading3" @click="loading3=!loading3">按钮</w-button>
-        <w-button-group>
-            <w-button icon="left" >上一页</w-button>
-            <w-button>提交</w-button>
-            <w-button icon="right" icon-position="right">下一页</w-button>
-        </w-button-group>
-    </div>
-    <script src="src/app.js"></script>
-    <script>
+<div id="app">
+    <w-button>按钮</w-button>
+    <w-button icon="setting" :loading="loading1" @click="loading1=!loading1">按钮</w-button>
+    <w-button icon="setting" icon-position="right" :loading="loading2" @click="loading2=!loading2">按钮</w-button>
+    <w-button icon="setting" icon-position="left" :loading="loading3" @click="loading3=!loading3">按钮</w-button>
+    <w-button-group>
+        <w-button icon="left">上一页</w-button>
+        <w-button>提交</w-button>
+        <w-button icon="right" icon-position="right">下一页</w-button>
+    </w-button-group>
+</div>
+<script src="src/app.js"></script>
+<script>
 
-    </script>
+</script>
 </body>
 
 </html>
