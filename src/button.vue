@@ -1,6 +1,6 @@
 <template>
-    <button class="w-button" name="todo">
-      <template >
+    <button class="w-button" name="todo" :class="{[`icon-${iconPosition}`]: true}">
+      <template v-if="icon">
         <g-icon :name="icon"/>
       </template>
         <div class="content">
@@ -13,12 +13,16 @@
   import Icon from './Icon.vue';
 
   export default {
-    mounted(){
-      console.log(this.icon)
-    },
     props:{
       icon:{
         type:String
+      },
+      iconPosition:{
+        type:String,
+        default:'left',
+        validator(value){
+          return value==='left'||value==='right'
+        }
       }
     },
     components: {
@@ -30,12 +34,11 @@
 
 <style lang="scss" scoped>
     .w-button {
+        vertical-align: middle;
         & {
           display: inline-flex;justify-content: center;align-items: center;
         }
-        &>.content{
-          margin-left: 0.3em;
-        }
+
         font: inherit;
         font-size: var(--font-size);
         height: var(--button-height);
@@ -54,6 +57,24 @@
 
         &:focus {
             outline: none;
+        }
+        &.icon-left{
+            .icon{
+                order: 1;
+                margin-right: .3em;
+            }
+            .content{
+                order: 2;
+            }
+        }
+        &.icon-right{
+            .icon{
+                order: 2;
+                margin-left: .3em;
+            }
+            .content{
+                order: 1;
+            }
         }
     }
 

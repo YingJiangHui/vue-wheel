@@ -1,5 +1,5 @@
 <template>
-    <svg class="w-icon">
+    <svg class="w-icon icon">
         <use :xlink:href="`#i-${name}`"></use>
     </svg>
 </template>
