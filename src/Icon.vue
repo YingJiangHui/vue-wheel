@@ -5,11 +5,13 @@
 </template>
 
 <script lang='ts'>
+  import './svg.js';
+
   export default {
 
-    props:{
-      name:{
-        type:String
+    props: {
+      name: {
+        type: String
       }
     }
   };
@@ -17,7 +19,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .w-icon{
+    .w-icon {
         width: 1em;
         height: 1em;
     }
