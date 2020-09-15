@@ -4,8 +4,8 @@ node_js:
 addons:
   chrome: stable
 
-deploy:
-  provider: npm
+install:
+  - yarn
 
 sudo: required
 before_script:
