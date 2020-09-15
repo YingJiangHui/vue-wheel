@@ -14,10 +14,9 @@ module.exports = function (config) {
 
 
         // list of files / patterns to load in the browser
-        //入口文件
         files: [
             'dist/**/*.test.js',
-            'dist/**/*.test.css'//测试时会用到css
+            'dist/**/*.test.css'
         ],
 
 
@@ -55,7 +54,6 @@ module.exports = function (config) {
 
         // start these browsers
         // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        //无头浏览器，不打开页面的浏览器
         browsers: ['ChromeHeadless'],
 
 
