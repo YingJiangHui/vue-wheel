@@ -4,6 +4,7 @@
   "description": "vue UI框架",
   "main": "dist/index.js",
   "scripts": {
+    "start": "parcel index.html --no-cache",
     "watch": "parcel watch test/* --no-cache",
     "dev-test": "karma start",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
@@ -25,6 +26,8 @@
     "chai-spies": "^1.0.0",
     "git-open": "^2.1.0",
     "global": "^4.4.0",
+    "svg": "^0.1.0",
+    "svg.js": "^2.7.1",
     "vue": "^2.6.12",
     "vue-hot-reload-api": "^2.3.4"
   },
