@@ -6,6 +6,7 @@ addons:
 
 install:
   - yarn
+  - parcel
 
 sudo: required
 before_script:
