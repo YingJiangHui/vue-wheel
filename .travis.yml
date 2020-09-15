@@ -6,6 +6,7 @@ addons:
 
 install:
   - yarn
+  - parcel-bundler
 
 sudo: required
 before_script:
