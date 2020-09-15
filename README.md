@@ -1,18 +1,25 @@
 ## vue造轮子
 
-使用本UI库需添加box-siaing属性
 
-示例：
+[![Build Status](https://travis-ci.org/YingJiangHui/vue-wheel.svg?branch=master)](https://travis-ci.org/YingJiangHui/vue-wheel)
+
+
+## 介绍
+
+## 开始使用
+
+1. 安装
 
 ```
 box-sizing:border-box;
 ```
 
-作者：应江辉
+## 文档
 
-使用UI库之前请先开启`border-box`
+## 提问
 
-示例：
-```
-*{box-sizing:border-box}
-```
+## 变更记录
+
+## 练习方式
+
+## 贡献代码
