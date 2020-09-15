@@ -1,8 +1,8 @@
 {
-  "name": "wheel",
-  "version": "0.0.1",
-  "description": "这是一个UI框架",
-  "main": "index.js",
+  "name": "ying-wheel-1",
+  "version": "0.0.2",
+  "description": "vue UI框架",
+  "main": "dist/index.js",
   "scripts": {
     "watch": "parcel watch test/* --no-cache",
     "dev-test": "karma start",
