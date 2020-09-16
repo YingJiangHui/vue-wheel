@@ -6,5 +6,14 @@ import ButtonGroup from './button-group.vue'
 Vue.component('w-button', Button)
 Vue.component('w-icon', Icon)
 Vue.component('w-button-group', ButtonGroup)
-new Vue({}).$mount('#app')
+new Vue({
+    data(){
+        return{
+            loading1:false,
+            loading2:false,
+            loading3:true,
+
+        }
+    }
+}).$mount('#app')
 

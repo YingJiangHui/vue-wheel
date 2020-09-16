@@ -6,6 +6,7 @@
 
 <script lang='ts'>
   export default {
+    name:"WButtonGroup",
     mounted(){
       for(let node of this.$el.children){
         const name  = node.nodeName.toLowerCase()

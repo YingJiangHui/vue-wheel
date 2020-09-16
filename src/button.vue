@@ -16,6 +16,7 @@
   import Icon from './Icon.vue';
 
   export default {
+    name:"WButton",
     props: {
       icon: {
         type: String

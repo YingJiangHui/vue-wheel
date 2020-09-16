@@ -8,7 +8,7 @@
   import './svg.js';
 
   export default {
-
+    name:'WIcon',
     props: {
       name: {
         type: String
