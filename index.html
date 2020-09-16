@@ -63,30 +63,10 @@
     <div class="box">
         <w-input value="小" error="不少于两个字符"></w-input>
     </div>
-    <w-row gutter="15">
-        <w-col>1</w-col>
-        <w-col>2</w-col>
-        <w-col>2</w-col>
-        <w-col>2</w-col>
-    </w-row>
-    <w-row align="center">
-        <w-col span="2">1</w-col>
-    </w-row>
     <w-row gutter="10">
-        <w-col span="2">1</w-col>
-        <w-col span="22">1</w-col>
-    </w-row>
-    <w-row>
-        <w-col span="4">1</w-col>
-        <w-col span="20">1</w-col>
-    </w-row>
-    <w-row>
-        <w-col span="20">1</w-col>
-        <w-col span="4">1</w-col>
-    </w-row>
-    <w-row>
-        <w-col span="2">1</w-col>
-        <w-col span="20" offset="2">1</w-col>
+        <w-col :iphone="{span:1}"  :pc="{span:20}">1</w-col>
+        <w-col :iphone="{span:22}" :pc="{span:1,offset:2}">2</w-col>
+        <w-col :iphone="{span:1}"  :pc="{span:1}">3</w-col>
     </w-row>
 </div>
 <script src="src/app.js"></script>
