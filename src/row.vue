@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :style="getGutter">
+    <div class="row" :style="getGutter" :class="getAlign">
         <slot></slot>
     </div>
 </template>
@@ -10,6 +10,11 @@
     props:{
       gutter:{
         type:[String,Number]
+      },
+      align:{
+        validator(value){
+          return ['right','left','center'].includes(value)
+        }
       }
     },
     mounted(){
@@ -20,6 +25,9 @@
     computed:{
       getGutter(){
         return {marginLeft: -this.gutter/2+'px', marginRight: -this.gutter/2+'px'}
+      },
+      getAlign(){
+        return [this.align && `align-${this.align}`]
       }
     }
   };
@@ -29,5 +37,14 @@
 <style lang="scss" scoped>
 .row{
     display: flex;
+    &.align-left{
+        justify-content: flex-start;
+    }
+    &.align-right{
+        justify-content: flex-end;
+    }
+    &.align-center{
+        justify-content: center;
+    }
 }
 </style>
