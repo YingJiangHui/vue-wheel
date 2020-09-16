@@ -1,6 +1,14 @@
 <template>
     <div class="wrapper">
-        <input type="text" :readonly="readonly" :disabled="disabled" :value="value" :class="{error}">
+        <input @change="$emit('change',$event)"
+               @input="$emit('input',$event)"
+               @blur="$emit('blur',$event)"
+               @focus="$emit('focus',$event)"
+               type="text"
+               :readonly="readonly"
+               :disabled="disabled"
+               :value="value"
+               :class="{error}">
         <template v-if="error">
             <w-icon name="error" class="icon-error"></w-icon>
             <span class="error-message">{{error}}</span>
@@ -9,8 +17,12 @@
 </template>
 
 <script lang='ts'>
+  import Icon from './Icon.vue';
   export default {
     name: 'WInput',
+    components:{
+      'w-icon':Icon
+    },
     props: {
       value: {
         type: String
