@@ -34,7 +34,8 @@
             margin-bottom: 20px;
             display: flex;
         }
-        .box>*:not(:last-child){
+
+        .box > *:not(:last-child) {
             margin-right: 10px;
         }
     </style>
@@ -61,6 +62,44 @@
     </div>
     <div class="box">
         <w-input value="小" error="不少于两个字符"></w-input>
+    </div>
+    <div class="box">
+        <w-row>
+            <w-col>1</w-col>
+            <w-col>2</w-col>
+            <w-col>2</w-col>
+            <w-col>2</w-col>
+        </w-row>
+    </div>
+    <div class="box">
+        <w-row>
+            <w-col span="12">1</w-col>
+            <w-col span="12">1</w-col>
+        </w-row>
+    </div>
+    <div class="box">
+        <w-row>
+            <w-col span="2">1</w-col>
+            <w-col span="22">1</w-col>
+        </w-row>
+    </div>
+    <div class="box">
+        <w-row>
+            <w-col span="4">1</w-col>
+            <w-col span="20">1</w-col>
+        </w-row>
+    </div>
+    <div class="box">
+        <w-row>
+            <w-col span="20">1</w-col>
+            <w-col span="4">1</w-col>
+        </w-row>
+    </div>
+    <div class="box">
+        <w-row>
+            <w-col span="2">1</w-col>
+            <w-col span="20" offset="2">1</w-col>
+        </w-row>
     </div>
 </div>
 <script src="src/app.js"></script>
