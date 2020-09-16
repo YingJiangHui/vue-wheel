@@ -58,9 +58,9 @@
           this.span && `col-${this.span}`,
           this.offset && `offset-${this.offset}`,
           ...createClasses(ipad,'ipad'),
-          ...createClasses(narrowPc,'narrowPc'),
+          ...createClasses(narrowPc,'narrow-pc'),
           ...createClasses(pc,'pc'),
-          ...createClasses(widePc,'widePc'),
+          ...createClasses(widePc,'wide-pc'),
           ...createClasses(iphone,'iphone'),
         ];
       },
@@ -146,13 +146,13 @@
             }
         }
         @media (min-width: 1200px) {
-            $class-prefix: 'col-pc-wide-';
+            $class-prefix: 'col-wide-pc-';
             @for $n from 1 through 24 {
                 &.#{$class-prefix}#{$n} {
                     width: ($n/24)*100%;
                 }
             }
-            $class-prefix: 'offset-pc-wide-';
+            $class-prefix: 'offset-wide-pc-';
             @for $n from 1 through 24 {
                 &.#{$class-prefix}#{$n} {
                     margin-left: ($n/24)*100%;
