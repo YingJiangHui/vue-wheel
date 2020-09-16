@@ -7,7 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>轱辘</title>
-    <style>
+    <style lang="scss">
         body {
             padding: 24px;
         }
@@ -28,21 +28,40 @@
             --button-active-bg: #eee;
             --button-hover-color: #666;
         }
+
+        .box {
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            display: flex;
+        }
+        .box>*:not(:last-child){
+            margin-right: 10px;
+        }
     </style>
 </head>
 
 <body>
 <div id="test"></div>
 <div id="app">
-    <w-button>按钮</w-button>
-    <w-button icon="setting" :loading="loading1" @click="loading1=!loading1">按钮</w-button>
-    <w-button icon="setting" icon-position="right" :loading="loading2" @click="loading2=!loading2">按钮</w-button>
-    <w-button icon="setting" icon-position="left" :loading="loading3" @click="loading3=!loading3">按钮</w-button>
-    <w-button-group>
-        <w-button icon="left">上一页</w-button>
-        <w-button>提交</w-button>
-        <w-button icon="right" icon-position="right">下一页</w-button>
-    </w-button-group>
+    <div class="box">
+        <w-button>按钮</w-button>
+        <w-button icon="setting" :loading="loading1" @click="loading1=!loading1">按钮</w-button>
+        <w-button icon="setting" icon-position="right" :loading="loading2" @click="loading2=!loading2">按钮</w-button>
+        <w-button icon="setting" icon-position="left" :loading="loading3" @click="loading3=!loading3">按钮</w-button>
+        <w-button-group>
+            <w-button icon="left">上一页</w-button>
+            <w-button>提交</w-button>
+            <w-button icon="right" icon-position="right">下一页</w-button>
+        </w-button-group>
+    </div>
+    <div class="box">
+        <w-input value="小明"></w-input>
+        <w-input value="大米" disabled></w-input>
+        <w-input value="小白" readonly></w-input>
+    </div>
+    <div class="box">
+        <w-input value="小" error="不少于两个字符"></w-input>
+    </div>
 </div>
 <script src="src/app.js"></script>
 <script>
