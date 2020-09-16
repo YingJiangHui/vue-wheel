@@ -1,5 +1,5 @@
 <template>
-    <div class="row" :style="{marginLeft: -gutter/2+'px', marginRight: -gutter/2+'px'}">
+    <div class="row" :style="getGutter">
         <slot></slot>
     </div>
 </template>
@@ -16,6 +16,11 @@
       this.$children.forEach((vm)=>{
         vm.gutter = this.gutter
       })
+    },
+    computed:{
+      getGutter(){
+        return {marginLeft: -this.gutter/2+'px', marginRight: -this.gutter/2+'px'}
+      }
     }
   };
 
