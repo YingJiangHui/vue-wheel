@@ -12,5 +12,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .eagle-content{
+        flex-grow: 1;
+    }
 </style>

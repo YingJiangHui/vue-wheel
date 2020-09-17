@@ -12,5 +12,6 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .eagle-sider{
+    }
 </style>

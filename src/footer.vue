@@ -12,5 +12,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    .eagle-footer{
+        height: 200px;
+    }
 </style>
