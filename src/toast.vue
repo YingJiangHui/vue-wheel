@@ -13,9 +13,9 @@
   export default {
     name: 'EagleToast',
     props: {
-      enableHtml:{
-        default:false,
-        type:Boolean,
+      enableHtml: {
+        default: false,
+        type: Boolean,
       },
       autoClose: {
         type: Boolean,
@@ -35,24 +35,31 @@
       }
     },
     mounted() {
-      if (this.autoClose)
-        setTimeout(() => {
-          this.close();
-        }, this.autoCloseDelay * 1000);
-      this.$nextTick(()=>{
-        const wrapperHeight = this.$refs.wrapper.getBoundingClientRect().height+'px'
-        this.$refs.line.style.height=wrapperHeight
-        this.$refs.closeButton.style.height = wrapperHeight
-      })
-
+      this.execAutoClose();
+      this.setElementHeight();
     },
     methods: {
+      execAutoClose() {
+        if (this.autoClose)
+          setTimeout(() => {
+            this.close();
+          }, this.autoCloseDelay * 1000);
+      },
+      setElementHeight() {
+        this.$nextTick(() => {
+          const wrapperHeight = this.$refs.wrapper.getBoundingClientRect().height + 'px';
+          this.$refs.line.style.height = wrapperHeight;
+          this.$refs.closeButton.style.height = wrapperHeight;
+        });
+      },
       close() {
         this.$el.remove();
         this.$destroy();
       },
-      closeToast(){
-        this.closeButton.callback()
+      closeToast() {
+        const {callback} = this.closeButton;
+        if (callback && typeof callback === 'function')
+          this.closeButton.callback(this);
         this.close();
       }
     }
@@ -75,13 +82,16 @@
         left: 50%;
         transform: translateX(-50%);
         color: white;
-        >.content{
+
+        > .content {
             padding: 13px 16px;
         }
-        >.line{
+
+        > .line {
             width: 1px;
             background-color: #fff;
         }
+
         > .close {
             display: flex;
             align-items: center;
