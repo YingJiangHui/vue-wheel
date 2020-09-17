@@ -35,7 +35,7 @@ new Vue({
     },
     methods:{
         showToast(){
-           this.$toast('提示消息')
+           this.$toast('提示消息',{autoClose: false})
        }
     }
 }).$mount('#app')
