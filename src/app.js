@@ -9,6 +9,8 @@ import Footer from './footer'
 import Content from './content'
 import Layout from './layout'
 import Sider from './sider'
+import plugin from './plugin'
+import Toast from './toast'
 
 Vue.component('w-button', Button)
 Vue.component('w-button-group', ButtonGroup)
@@ -20,7 +22,8 @@ Vue.component('e-footer',Footer)
 Vue.component('e-content',Content)
 Vue.component('e-sider',Sider)
 Vue.component('e-layout',Layout)
-
+Vue.component('e-toast',Toast)
+Vue.use(plugin)
 new Vue({
     data(){
         return{
@@ -31,9 +34,9 @@ new Vue({
         }
     },
     methods:{
-        fn(e){
-            console.log(e)
-        }
+        showToast(){
+           this.$toast('提示消息')
+       }
     }
 }).$mount('#app')
 
