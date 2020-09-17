@@ -1,18 +1,25 @@
 <template>
-    <div class="eagle-toast" ref="wrapper">
-        <div class="content">
-            <div v-if="enableHtml" class="slots" v-html="$slots.default[0]"></div>
-            <slot v-if="!enableHtml"></slot>
+    <div class="wrapper" :class="totalClass">
+        <div class="eagle-toast" ref="toast" >
+            <div class="content">
+                <div v-if="enableHtml" class="slots" v-html="$slots.default[0]"></div>
+                <slot v-else></slot>
+            </div>
+            <div class="line" ref="line" v-if="closeButton"></div>
+            <span class="close" ref="closeButton" @click="closeToast" v-if="closeButton">{{closeButton.text}}</span>
         </div>
-        <div class="line" ref="line" v-if="closeButton"></div>
-        <span class="close" ref="closeButton" @click="closeToast" v-if="closeButton">{{closeButton.text}}</span>
     </div>
+
 </template>
 
 <script lang='ts'>
   export default {
     name: 'EagleToast',
     props: {
+      position: {
+        type: String,
+        default: 'top'
+      },
       enableHtml: {
         default: false,
         type: Boolean,
@@ -34,6 +41,11 @@
         }
       }
     },
+    computed: {
+      totalClass() {
+        return {[`toast-${this.position}`]: true};
+      }
+    },
     mounted() {
       this.execAutoClose();
       this.setElementHeight();
@@ -47,9 +59,9 @@
       },
       setElementHeight() {
         this.$nextTick(() => {
-          const wrapperHeight = this.$refs.wrapper.getBoundingClientRect().height + 'px';
-          this.$refs.line.style.height = wrapperHeight;
-          this.$refs.closeButton.style.height = wrapperHeight;
+          const toastHeight = this.$refs.toast.getBoundingClientRect().height + 'px';
+          this.$refs.line.style.height = toastHeight;
+          this.$refs.closeButton.style.height = toastHeight;
         });
       },
       close() {
@@ -68,8 +80,49 @@
 </script>
 
 <style lang="scss" scoped>
+    @keyframes slide-up {
+        0%{
+            transform: translateY(100%);
+        }
+        100%{
+            transform: translateY(0);
+        }
+    }
+    @keyframes slide-down {
+        0% {opacity: 0; transform: translateY(-100%);}
+        100% {opacity: 1;transform: translateY(0);}
+    }
+
     $border-radius: 4px;
     $bg-color: rgba(0, 0, 0, 0.75);
+    .wrapper {
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        &.toast-top {
+            top: 0;
+            .eagle-toast{
+                animation: slide-down .3s linear;
+            }
+        }
+
+        &.toast-middle {
+            top: 50%;
+            transform: translateY(-50%);
+            .eagle-toast {
+                animation: slide-up .3s linear;
+            }
+        }
+
+        &.toast-bottom {
+            bottom:0;
+            .eagle-toast{
+                animation: slide-up .3s linear;
+            }
+        }
+
+    }
+
     .eagle-toast {
 
         display: flex;
@@ -77,10 +130,6 @@
         border-radius: $border-radius;
         background-color: $bg-color;
         box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.50);
-        position: fixed;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
         color: white;
 
         > .content {
@@ -99,5 +148,6 @@
             cursor: pointer;
             padding: 0 16px;
         }
+
     }
 </style>

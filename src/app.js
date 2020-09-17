@@ -34,10 +34,20 @@ new Vue({
         }
     },
     methods: {
-        showToast() {
+        showToast1(){
+            this.showToast('top')
+        },
+        showToast2(){
+            this.showToast('bottom')
+        },
+        showToast3(){
+            this.showToast('middle')
+        },
+        showToast(position) {
             this.$toast(`<strong>提示信息</strong>`, {
                 autoClose: false,
                 enableHtml:true,
+                position,
                 closeButton: {
                     text: '知道了', callback:function() {
                         console.log('关闭成功')
