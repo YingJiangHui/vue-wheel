@@ -1,10 +1,11 @@
 <template>
     <div class="eagle-toast" ref="wrapper">
         <div class="content">
-            <slot></slot>
+            <div v-if="enableHtml" class="slots" v-html="$slots.default[0]"></div>
+            <slot v-if="!enableHtml"></slot>
         </div>
-        <div class="line" ref="line"></div>
-        <span class="close" @click="closeToast" v-if="closeButton">{{closeButton.text}}</span>
+        <div class="line" ref="line" v-if="closeButton"></div>
+        <span class="close" ref="closeButton" @click="closeToast" v-if="closeButton">{{closeButton.text}}</span>
     </div>
 </template>
 
@@ -12,6 +13,10 @@
   export default {
     name: 'EagleToast',
     props: {
+      enableHtml:{
+        default:false,
+        type:Boolean,
+      },
       autoClose: {
         type: Boolean,
         default: true
@@ -35,7 +40,9 @@
           this.close();
         }, this.autoCloseDelay * 1000);
       this.$nextTick(()=>{
-        this.$refs.line.style.height=this.$refs.wrapper.getBoundingClientRect().height+'px'
+        const wrapperHeight = this.$refs.wrapper.getBoundingClientRect().height+'px'
+        this.$refs.line.style.height=wrapperHeight
+        this.$refs.closeButton.style.height = wrapperHeight
       })
 
     },
@@ -45,6 +52,7 @@
         this.$destroy();
       },
       closeToast(){
+        this.closeButton.callback()
         this.close();
       }
     }
@@ -75,6 +83,9 @@
             background-color: #fff;
         }
         > .close {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
             cursor: pointer;
             padding: 0 16px;
         }

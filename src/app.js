@@ -15,28 +15,36 @@ import Toast from './toast'
 Vue.component('w-button', Button)
 Vue.component('w-button-group', ButtonGroup)
 Vue.component('w-input', Input)
-Vue.component('w-row',Row)
-Vue.component('w-col',Col)
-Vue.component('e-header',Header)
-Vue.component('e-footer',Footer)
-Vue.component('e-content',Content)
-Vue.component('e-sider',Sider)
-Vue.component('e-layout',Layout)
-Vue.component('e-toast',Toast)
+Vue.component('w-row', Row)
+Vue.component('w-col', Col)
+Vue.component('e-header', Header)
+Vue.component('e-footer', Footer)
+Vue.component('e-content', Content)
+Vue.component('e-sider', Sider)
+Vue.component('e-layout', Layout)
+Vue.component('e-toast', Toast)
 Vue.use(plugin)
 new Vue({
-    data(){
-        return{
-            loading1:false,
-            loading2:false,
-            loading3:true,
-            message:'hi'
+    data() {
+        return {
+            loading1: false,
+            loading2: false,
+            loading3: true,
+            message: 'hi'
         }
     },
-    methods:{
-        showToast(){
-           this.$toast('提示消息',{autoClose: false})
-       }
+    methods: {
+        showToast() {
+            this.$toast(`<strong>提示信息</strong>`, {
+                autoClose: false,
+                enableHtml:true,
+                closeButton: {
+                    text: '知道了', callback:function() {
+                        console.log('关闭成功')
+                    }
+                }
+            })
+        }
     }
 }).$mount('#app')
 
