@@ -27,13 +27,12 @@
         default: false,
         type: Boolean,
       },
-      autoClose: {
-        type: Boolean,
-        default: true
-      },
       autoCloseDelay: {
-        type: Number,
-        default: 60
+        type: [Number,Boolean],
+        default: false,
+        validator(value){
+          return value===false||typeof value ==='number'
+        }
       },
       closeButton: {
         type: Object,
@@ -55,14 +54,16 @@
     },
     methods: {
       execAutoClose() {
-        if (this.autoClose)
+        if (this.autoCloseDelay)
           setTimeout(() => {
             this.close();
           }, this.autoCloseDelay * 1000);
       },
       setElementHeight() {
+
+        const toastHeight = this.$refs.toast.getBoundingClientRect().height + 'px';
         this.$nextTick(() => {
-          const toastHeight = this.$refs.toast.getBoundingClientRect().height + 'px';
+
           this.$refs.line.style.height = toastHeight;
           this.$refs.closeButton.style.height = toastHeight;
         });

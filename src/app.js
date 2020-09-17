@@ -48,7 +48,7 @@ new Vue({
         },
         showToast(position) {
             this.$toast(`<strong>提示信息</strong>`, {
-                autoClose: false,
+                autoCloseDelay: false,
                 enableHtml:true,
                 position,
                 closeButton: {
