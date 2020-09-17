@@ -109,7 +109,7 @@
 
         &.toast-middle {
             top: 50%;
-            transform: translateY(-50%);
+            transform: translateY(-50%) translateX(-50%);
             .eagle-toast {
                 animation: slide-up .3s linear;
             }
