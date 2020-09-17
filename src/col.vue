@@ -9,14 +9,13 @@
 <script lang='ts'>
   const validator = (value) => {
     let keys = Object.keys(value);
-    let vaild = true;
-    console.log(value);
+    let valid = true;
     keys.forEach(item => {
-      if (!['offset', 'span'].includes(item)) {
-        vaild = false;
+      if (!['offset', 'span'].indexOf(item)>=0) {
+        valid = false;
       }
     });
-    return vaild;
+    return valid;
   };
   export default {
     name: 'WCol',

@@ -13,7 +13,7 @@
       },
       align:{
         validator(value){
-          return ['right','left','center'].includes(value)
+          return ['right','left','center'].indexOf(value)>=0
         }
       }
     },

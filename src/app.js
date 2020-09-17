@@ -43,6 +43,9 @@ new Vue({
         showToast3(){
             this.showToast('middle')
         },
+        showToast4(){
+            this.showToast('ssd')
+        },
         showToast(position) {
             this.$toast(`<strong>提示信息</strong>`, {
                 autoClose: false,

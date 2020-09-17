@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper" :class="totalClass">
-        <div class="eagle-toast" ref="toast" >
+        <div class="eagle-toast" ref="toast">
             <div class="content">
                 <div v-if="enableHtml" class="slots" v-html="$slots.default[0]"></div>
                 <slot v-else></slot>
@@ -18,7 +18,10 @@
     props: {
       position: {
         type: String,
-        default: 'top'
+        default: 'top',
+        validator(value) {
+          return ['top', 'bottom', 'middle'].indexOf(value) >= 0;
+        }
       },
       enableHtml: {
         default: false,
@@ -82,13 +85,14 @@
 
 <style lang="scss" scoped>
     @keyframes slide-up {
-        0%{
+        0% {
             transform: translateY(100%);
         }
-        100%{
+        100% {
             transform: translateY(0);
         }
     }
+
     @keyframes slide-down {
         0% {opacity: 0; transform: translateY(-100%);}
         100% {opacity: 1;transform: translateY(0);}
@@ -100,9 +104,11 @@
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
+
         &.toast-top {
             top: 0;
-            .eagle-toast{
+
+            .eagle-toast {
                 animation: slide-down .3s linear;
             }
         }
@@ -110,14 +116,16 @@
         &.toast-middle {
             top: 50%;
             transform: translateY(-50%) translateX(-50%);
+
             .eagle-toast {
                 animation: slide-up .3s linear;
             }
         }
 
         &.toast-bottom {
-            bottom:0;
-            .eagle-toast{
+            bottom: 0;
+
+            .eagle-toast {
                 animation: slide-up .3s linear;
             }
         }
