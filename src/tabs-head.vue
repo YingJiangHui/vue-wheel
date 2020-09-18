@@ -7,7 +7,9 @@
 
 <script lang='ts'>
 export default {
-  name:'EagleTabsHead'
+  name:'EagleTabsHead',
+  inject:['eventBus'],
+
 }
 
 </script>

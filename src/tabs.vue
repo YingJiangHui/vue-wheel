@@ -5,6 +5,7 @@
 </template>
 
 <script lang='ts'>
+    import Vue from 'vue'
 export default {
   name:'EagleTabs',
   props:{
@@ -19,11 +20,25 @@ export default {
       type:String,
       required:true,
     }
+  },
+  provide(){
+    return{
+      eventBus: this.eventBus
+    }
+  },
+  data(){
+    return {
+      eventBus: new Vue()
+    }
+  },
+  created(){
+    this.eventBus.$on('update:selected',(data)=>{
+      this.$emit('update:selected',data)
+    })
   }
 }
 
 </script>
 
 <style lang="scss" scoped>
-
 </style>

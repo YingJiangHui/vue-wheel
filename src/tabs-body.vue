@@ -6,7 +6,8 @@
 
 <script lang='ts'>
   export default {
-    name:'EagleTabsBody'
+    name:'EagleTabsBody',
+    inject:['eventBus']
   };
 
 </script>
