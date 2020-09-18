@@ -11,7 +11,12 @@ import Layout from './layout'
 import Sider from './sider'
 import plugin from './plugin'
 import Toast from './toast'
-
+import TabsBody from './tabs-body'
+import TabsHead from './tabs-head'
+import TabsItem from './tabs-item'
+import TabsPane from './tabs-pane'
+import Tabs from './tabs'
+import Popover from './popover'
 Vue.component('w-button', Button)
 Vue.component('w-button-group', ButtonGroup)
 Vue.component('w-input', Input)
@@ -23,41 +28,21 @@ Vue.component('e-content', Content)
 Vue.component('e-sider', Sider)
 Vue.component('e-layout', Layout)
 Vue.component('e-toast', Toast)
+Vue.component('e-tabs-body', TabsBody)
+Vue.component('e-tabs-head', TabsHead)
+Vue.component('e-tabs-item', TabsItem)
+Vue.component('e-tabs-pane', TabsPane)
+Vue.component('e-tabs', Tabs)
+Vue.component('e-popover', Popover)
+
 Vue.use(plugin)
 new Vue({
     data() {
         return {
-            loading1: false,
-            loading2: false,
-            loading3: true,
-            message: 'hi'
+            selectedTab:'sports'
         }
     },
     methods: {
-        showToast1(){
-            this.showToast('top')
-        },
-        showToast2(){
-            this.showToast('bottom')
-        },
-        showToast3(){
-            this.showToast('middle')
-        },
-        showToast4(){
-            this.showToast('ssd')
-        },
-        showToast(position) {
-            this.$toast(`<strong>提示信息</strong>`, {
-                autoCloseDelay: false,
-                enableHtml:true,
-                position,
-                closeButton: {
-                    text: '知道了', callback:function() {
-                        console.log('关闭成功')
-                    }
-                }
-            })
-        }
     }
 }).$mount('#app')
 

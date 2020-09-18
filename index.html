@@ -46,12 +46,23 @@
 
 <body>
 <div id="test"></div>
-<div id="app">
-    <button @click="showToast1">click</button>
-    <button @click="showToast2">click</button>
-    <button @click="showToast3">click</button>
-
-    <button @click="showToast4">click</button>
+<div id="app" style="padding-top: 150px">
+    <e-popover position="top">
+        <template slot="content">content1</template>
+        <button>按钮1</button>
+    </e-popover>
+    <e-popover position="bottom">
+        <template slot="content">content2</template>
+        <button>按钮2</button>
+    </e-popover>
+    <e-popover position="left">
+        <template slot="content">content3</template>
+        <button>按钮3</button>
+    </e-popover>
+    <e-popover position="right">
+        <template slot="content">content4</template>
+        <button>按钮4</button>
+    </e-popover>
 </div>
 <script src="src/app.js"></script>
 <script>
