@@ -59,12 +59,13 @@
       },
       destroyEventListener() {
         const {trigger} = this.$refs;
-        if (this.trigger === 'click') {
-          trigger.removeEventListener('click', this.onClick);
-        } else if (this.trigger === 'hover') {
-          trigger.removeEventListener('mouseenter', this.open);
-          trigger.removeEventListener('mouseleave', this.close);
-        }
+        if (trigger)
+          if (this.trigger === 'click') {
+            trigger.removeEventListener('click', this.onClick);
+          } else if (this.trigger === 'hover') {
+            trigger.removeEventListener('mouseenter', this.open);
+            trigger.removeEventListener('mouseleave', this.close);
+          }
       },
       positionContent() {
         const {popover, contentWrapper} = this.$refs;
@@ -160,6 +161,7 @@
         margin-top: -10px;
 
         filter: drop-shadow(0 1px 1px $shadow);
+
         &::before, &::after {
             left: 10px;
             border-bottom: none;
