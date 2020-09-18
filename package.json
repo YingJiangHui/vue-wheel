@@ -6,7 +6,7 @@
   "scripts": {
     "start": "parcel index.html --no-cache",
     "watch": "parcel watch test/* --no-cache",
-    "dev-test": "karma start",
+    "dev-test": "karma start --no-cache ",
     "test": "parcel build test/* --no-cache --no-minify && karma start --single-run"
   },
   "repository": "git+https://github.com/YingJiangHui/vue-wheel.git",

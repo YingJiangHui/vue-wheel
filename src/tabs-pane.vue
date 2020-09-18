@@ -28,7 +28,9 @@
 </script>
 
 <style lang="scss" scoped>
+    .eagle-tabs-pane{
+        padding: 1em;
+    }
     .active {
-        border: 1px solid red;
     }
 </style>

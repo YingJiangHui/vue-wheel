@@ -1,5 +1,5 @@
 <template>
-    <div class="eagle-tabs-item" @click="onSelect" :class="{active,disabled}">
+    <div class="eagle-tabs-item" @click="onSelect" :class="classes">
         <slot></slot>
     </div>
 </template>
@@ -21,14 +21,18 @@
         active: false
       };
     },
-    methods: {
-      onSelect() {
-        this.eventBus.$emit('update:selected', this.name);
+    computed: {
+      classes () {
+        return {
+          active: this.active,
+          disabled: this.disabled
+        }
       }
     },
-    computed: {
-      classes() {
-        return this.active;
+    methods: {
+      onSelect() {
+        if(this.disabled) return;
+        this.eventBus.$emit('update:selected', this.name,this);
       }
     },
     created() {
@@ -41,10 +45,19 @@
 </script>
 
 <style lang="scss" scoped>
-    .active {
-        border: 1px solid red;
-    }
-    .disable{
-
+    .eagle-tabs-item{
+        &{
+            display: flex;
+            align-items: center;
+            padding: 0 1em;
+            cursor: pointer;
+            height: 100%;
+        }
+        &.active {
+            color: dodgerblue;
+        }
+        &.disabled{
+            color: #aaa;
+        }
     }
 </style>
