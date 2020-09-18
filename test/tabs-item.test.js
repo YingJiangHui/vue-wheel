@@ -27,9 +27,9 @@ describe('Button', () => {
         const Constructor = Vue.extend(TabsItem)
         const vm = new Constructor({
             propsData: {
-                name: 'xxx',
+                name: 'positionContent',
             }
         }).$mount()
-        expect(vm.$el.getAttribute('data-name')).to.eq('xxx')
+        expect(vm.$el.getAttribute('data-name')).to.eq('positionContent')
     })
 })
