@@ -1,5 +1,5 @@
 <template>
-    <div class="eagle-tabs-item" @click="onClick" :class="{active}">
+    <div class="eagle-tabs-item" @click="onSelect" :class="{active,disabled}">
         <slot></slot>
     </div>
 </template>
@@ -9,6 +9,10 @@
     name: 'EagleTabsItem',
     inject: ['eventBus'],
     props: {
+      disabled:{
+        type:Boolean,
+        default: false
+      },
       name: [String, Number],
       required: true
     },
@@ -18,7 +22,7 @@
       };
     },
     methods: {
-      onClick() {
+      onSelect() {
         this.eventBus.$emit('update:selected', this.name);
       }
     },
@@ -39,5 +43,8 @@
 <style lang="scss" scoped>
     .active {
         border: 1px solid red;
+    }
+    .disable{
+
     }
 </style>
