@@ -1,7 +1,7 @@
 <template>
     <div class="eagle-popover" ref="popover">
         <div class="content-wrapper" :class="classes" v-if="visible" ref="contentWrapper">
-            <slot name="content"></slot>
+            <slot name="content" :close="close"></slot>
         </div>
         <span class="trigger-wrapper" ref="trigger">
             <slot></slot>
@@ -51,31 +51,19 @@
       mountEventListener() {
         const {trigger} = this.$refs;
         if (this.trigger === 'click') {
-          trigger.addEventListener('click', () => {
-            this.onClick();
-          });
+          trigger.addEventListener('click', this.onClick);
         } else if (this.trigger === 'hover') {
-          trigger.addEventListener('mouseenter', () => {
-            this.open();
-          });
-          trigger.addEventListener('mouseleave', () => {
-            this.close();
-          });
+          trigger.addEventListener('mouseenter', this.open);
+          trigger.addEventListener('mouseleave', this.close);
         }
       },
       destroyEventListener() {
         const {trigger} = this.$refs;
         if (this.trigger === 'click') {
-          trigger.removeEventListener('click', () => {
-            this.onClick();
-          });
+          trigger.removeEventListener('click', this.onClick);
         } else if (this.trigger === 'hover') {
-          trigger.removeEventListener('mouseenter', () => {
-            this.open();
-          });
-          trigger.removeEventListener('mouseleave', () => {
-            this.close();
-          });
+          trigger.removeEventListener('mouseenter', this.open);
+          trigger.removeEventListener('mouseleave', this.close);
         }
       },
       positionContent() {
@@ -94,11 +82,11 @@
           },
           'left': {
             left: left + window.screenX,
-            top: top + window.screenY + ( height-height2) / 2
+            top: top + window.screenY + (height - height2) / 2
           },
           'right': {
             left: left + window.screenX + width,
-            top: top + window.screenY + ( height-height2) / 2
+            top: top + window.screenY + (height - height2) / 2
           },
         };
         contentWrapper.style.left = positions[this.position]['left'] + 'px';
@@ -138,28 +126,22 @@
 
 <style lang="scss" scoped>
     $border-radius: 4px;
+    $border-color: rgba(0, 0, 0, 0.5);
+    $shadow: #000;
     .eagle-popover {
         display: inline-block;
         position: relative;
 
-        > .trigger-wrapper {
-            > button {
-                outline: none;
-                background: #fff;
-                padding: .3em 1em;
-                border-radius: $border-radius;
-            }
 
-        }
     }
 
     .content-wrapper {
+        max-width: 400px;
         position: absolute;
-        border: 1px solid #000;
+        border: 1px solid $border-color;
         border-radius: $border-radius;
-        filter: drop-shadow(0 1px 1px #000);
         background: #fff;
-
+        word-break: break-all;
         padding: .5em 1em;
 
         &::before, &::after {
@@ -170,19 +152,22 @@
             position: absolute;
         }
 
+
     }
 
     .eagle-top {
         transform: translateY(-100%);
         margin-top: -10px;
 
+        filter: drop-shadow(0 1px 1px $shadow);
         &::before, &::after {
             left: 10px;
+            border-bottom: none;
         }
 
         &::before {
             top: 100%;
-            border-top-color: #000;
+            border-top-color: $border-color;
         }
 
         &::after {
@@ -192,16 +177,19 @@
     }
 
     .eagle-bottom {
+        filter: drop-shadow(0 -0.5px 1px $shadow);
+
         transform: translateY(100%);
-        margin-bottom: -10px;
+        margin-top: -10px;
 
         &::before, &::after {
             left: 10px;
+            border-top: none;
         }
 
         &::before {
             bottom: 100%;
-            border-bottom-color: #000;
+            border-bottom-color: $border-color;
         }
 
         &::after {
@@ -211,17 +199,20 @@
     }
 
     .eagle-left {
+        filter: drop-shadow(1px 0 1px $shadow);
         transform: translateX(-100%);
         margin-left: -10px;
 
         &::before, &::after {
+            border-right: none;
+
             top: 50%;
             transform: translateY(-50%);
         }
 
         &::before {
             left: 100%;
-            border-left-color: #000;
+            border-left-color: $border-color;
         }
 
         &::after {
@@ -232,15 +223,18 @@
 
     .eagle-right {
         margin-left: 10px;
+        filter: drop-shadow(-1px 0 1px $shadow);
 
         &::before, &::after {
+            border-left: none;
+
             top: 50%;
             transform: translateY(-50%);
         }
 
         &::before {
             right: 100%;
-            border-right-color: #000;
+            border-right-color: $border-color;
         }
 
         &::after {
