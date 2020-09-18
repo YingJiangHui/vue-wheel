@@ -3,7 +3,7 @@
         <div class="content-wrapper" :class="classes" v-if="visible" ref="contentWrapper">
             <slot name="content"></slot>
         </div>
-        <span class="trigger-wrapper" @click="onClick">
+        <span class="trigger-wrapper" ref="trigger">
             <slot></slot>
         </span>
     </div>
@@ -14,6 +14,13 @@
   export default {
     name: 'EaglePopover',
     props: {
+      trigger: {
+        type: String,
+        default: 'click',
+        validator(value) {
+          return ['click', 'hover'].indexOf(value) >= 0;
+        }
+      },
       position: {
         type: String,
         default: 'top',
@@ -27,17 +34,55 @@
         visible: false
       };
     },
+    mounted() {
+      this.mountEventListener();
+    },
+    destroyed() {
+      //使用vue的事件系统时vue会帮助我们做这一步，
+      // 使用原生的事件系统需要手动去除监听
+      this.destroyEventListener();
+    },
     computed: {
       classes() {
         return {[`eagle-${this.position}`]: true};
       }
     },
     methods: {
+      mountEventListener() {
+        const {trigger} = this.$refs;
+        if (this.trigger === 'click') {
+          trigger.addEventListener('click', () => {
+            this.onClick();
+          });
+        } else if (this.trigger === 'hover') {
+          trigger.addEventListener('mouseenter', () => {
+            this.open();
+          });
+          trigger.addEventListener('mouseleave', () => {
+            this.close();
+          });
+        }
+      },
+      destroyEventListener() {
+        const {trigger} = this.$refs;
+        if (this.trigger === 'click') {
+          trigger.removeEventListener('click', () => {
+            this.onClick();
+          });
+        } else if (this.trigger === 'hover') {
+          trigger.removeEventListener('mouseenter', () => {
+            this.open();
+          });
+          trigger.removeEventListener('mouseleave', () => {
+            this.close();
+          });
+        }
+      },
       positionContent() {
-        const {popover,contentWrapper} = this.$refs
+        const {popover, contentWrapper} = this.$refs;
         document.body.appendChild(contentWrapper);
         const {left, top, width, height} = popover.getBoundingClientRect();
-        const {height:height2} = contentWrapper.getBoundingClientRect()
+        const {height: height2} = contentWrapper.getBoundingClientRect();
         const positions = {
           'top': {
             left: left + window.screenX,
@@ -49,11 +94,11 @@
           },
           'left': {
             left: left + window.screenX,
-            top: top + window.screenY-(height2-height)/2
+            top: top + window.screenY + ( height-height2) / 2
           },
           'right': {
-            left: left + window.screenX+width,
-            top: top + window.screenY-(height2-height)/2
+            left: left + window.screenX + width,
+            top: top + window.screenY + ( height-height2) / 2
           },
         };
         contentWrapper.style.left = positions[this.position]['left'] + 'px';
@@ -112,15 +157,16 @@
         position: absolute;
         border: 1px solid #000;
         border-radius: $border-radius;
-        padding: .5em 1em;
         filter: drop-shadow(0 1px 1px #000);
         background: #fff;
+
+        padding: .5em 1em;
 
         &::before, &::after {
             width: 0;
             height: 0;
             content: '';
-            border:10px solid transparent;
+            border: 10px solid transparent;
             position: absolute;
         }
 
@@ -129,13 +175,16 @@
     .eagle-top {
         transform: translateY(-100%);
         margin-top: -10px;
+
         &::before, &::after {
             left: 10px;
         }
-            &::before{
+
+        &::before {
             top: 100%;
             border-top-color: #000;
         }
+
         &::after {
             top: calc(100% - 1px);
             border-top-color: #fff;
@@ -145,44 +194,55 @@
     .eagle-bottom {
         transform: translateY(100%);
         margin-bottom: -10px;
+
         &::before, &::after {
             left: 10px;
         }
-            &::before{
+
+        &::before {
             bottom: 100%;
             border-bottom-color: #000;
         }
+
         &::after {
             bottom: calc(100% - 1px);
             border-bottom-color: #fff;
         }
     }
+
     .eagle-left {
         transform: translateX(-100%);
         margin-left: -10px;
+
         &::before, &::after {
             top: 50%;
             transform: translateY(-50%);
         }
-        &::before{
+
+        &::before {
             left: 100%;
             border-left-color: #000;
         }
+
         &::after {
             left: calc(100% - 1px);
             border-left-color: #fff;
         }
     }
+
     .eagle-right {
         margin-left: 10px;
+
         &::before, &::after {
             top: 50%;
             transform: translateY(-50%);
         }
-        &::before{
+
+        &::before {
             right: 100%;
             border-right-color: #000;
         }
+
         &::after {
             right: calc(100% - 1px);
             border-right-color: #fff;
