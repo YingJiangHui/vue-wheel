@@ -9,7 +9,7 @@ describe('Popover', () => {
     it('存在', () => {
         expect(Popover).to.be.exist
     })
-    it('可以设置position.', (done) => {
+    it('接收 position.', (done) => {
         Vue.component('e-popover',Popover)
         const div = document.createElement('div')
         document.body.appendChild(div)
@@ -29,5 +29,6 @@ describe('Popover', () => {
             done()
         })
     })
+    it('接收改触发的事件',()=>{})
 
 })
