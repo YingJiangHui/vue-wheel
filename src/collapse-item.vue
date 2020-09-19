@@ -6,6 +6,7 @@
         <div class="content" v-if="visible">
             <slot></slot>
         </div>
+
     </div>
 </template>
 
@@ -51,13 +52,23 @@
 <style lang="scss" scoped>
     $border-color: #dbdbdb;
     $bg-color: #fafafa;
-    $border-radius:4px;
+    $border-radius: 4px;
+    @keyframes slide {
+        0% {
+            height: 0;
+        }
+        100% {
+            height: 16px;
+        }
+    }
+
     .collapse-item {
         > .title {
             border: 1px solid $border-color;
             margin-top: -1px;
             margin-left: -1px;
             margin-right: -1px;
+
             min-height: 32px;
             display: flex;
             align-items: center;
@@ -72,14 +83,17 @@
         }
 
         &:last-child {
-            > .title:last-child {
+            >:last-child{
                 border-bottom-left-radius: $border-radius;
                 border-bottom-right-radius: $border-radius;
+                margin-bottom:-1px;
             }
         }
 
         > .content {
             padding: 8px;
         }
+
+
     }
 </style>
