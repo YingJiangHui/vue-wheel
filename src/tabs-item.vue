@@ -48,7 +48,11 @@
 </script>
 
 <style lang="scss" scoped>
+    $color:dodgerblue;
     .eagle-tabs-item {
+        .w-icon{
+            padding-right: .3em;
+        }
         & {
             display: flex;
             align-items: center;
@@ -58,10 +62,14 @@
         }
 
         &.active {
-            color: dodgerblue;
+            .w-icon{
+                fill:$color;
+            }
+            color: $color;
         }
 
         &.disabled {
+            cursor: not-allowed;
             color: #aaa;
         }
     }

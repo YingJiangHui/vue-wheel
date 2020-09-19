@@ -20,10 +20,11 @@
 </script>
 
 <style lang="scss" scoped>
+    $border-radius:4px;
     .button-group{
         vertical-align: middle;
         display: inline-flex;
-        > .w-button {
+        > .eagle-button {
             border-radius: 0;
             &:active,&:focus,&:hover{
                 position: relative;
@@ -32,13 +33,14 @@
             &:not(:first-child) {
                 margin-left: -1px;
             }
+
             &:first-child{
-                border-bottom-left-radius: var(--border-radius);
-                border-top-left-radius: var(--border-radius);
+                border-bottom-left-radius: $border-radius;
+                border-top-left-radius: $border-radius;
             }
             &:last-child{
-                border-bottom-right-radius: var(--border-radius);
-                border-top-right-radius: var(--border-radius);
+                border-bottom-right-radius: $border-radius;
+                border-top-right-radius: $border-radius;
             }
         }
     }

@@ -8,35 +8,37 @@
     </div>
 </template>
 
-<script lang='ts'>
-export default {
-  name:'EagleTabsHead',
-  inject:['eventBus'],
-  mounted(){
-    this.eventBus.$on('update:selected',(item,vm)=>{
-      // if(vm.disabled)return;
-        const {height,width,left,top} = vm.$el.getBoundingClientRect()
-        this.$refs.line.style.left=left+'px'
-        this.$refs.line.style.width=width+'px'
-    })
+<script>
+  export default {
+    name: 'EagleTabsHead',
+    inject: ['eventBus'],
+    mounted() {
+      this.eventBus.$on('update:selected', (item, vm) => {
+        const { width} = vm.$el.getBoundingClientRect();
+        this.$refs.line.style.left = vm.$el.offsetLeft  + 'px';
+        this.$refs.line.style.width = width + 'px';
+      });
 
-  }
-}
+    }
+  };
 
 </script>
 
 <style lang="scss" scoped>
-    .eagle-tabs-head{
+    .eagle-tabs-head {
+
         border: 1px solid #ddd;
         height: 48px;
         display: flex;
         align-items: center;
         position: relative;
-        >.actions-wrapper{
+
+        > .actions-wrapper {
             margin-left: auto;
         }
-        >.line{
-            transition:all .2s;
+
+        > .line {
+            transition: all .2s;
             left: 0;
             bottom: 0;
             position: absolute;

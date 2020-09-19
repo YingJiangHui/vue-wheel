@@ -54,7 +54,7 @@
     $disable-color: #bbb;
     .wrapper {
         font-size: $font-size;
-
+        display: inline-block;
         > input {border-radius: $border-radius;height: 32px;font-size: inherit;padding: 0 8px;
             outline: none;border: 1px solid $border-color;transition: box-shadow .25s;
 
@@ -68,7 +68,7 @@
             }
 
             &.error {border-color: $error-color;
-
+                color:$error-color;
                 &:focus {box-shadow: 0 0 0 4px $shadow-error-color;}
             }
         }

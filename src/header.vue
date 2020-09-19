@@ -13,6 +13,5 @@
 
 <style lang="scss" scoped>
     .eagle-header{
-        height: 200px;
     }
 </style>
