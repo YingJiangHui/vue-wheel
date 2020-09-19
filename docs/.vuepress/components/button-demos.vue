@@ -1,19 +1,30 @@
 <template>
     <div>
         <e-button>默认按钮</e-button>
+        <e-button :loading="loading" @click="loading=!loading">{{loading?'加载中':'默认按钮'}}</e-button>
+        <e-button icon="setting">添加图标</e-button>
+        <e-button icon="setting" iconPosition="right">添加图标</e-button>
+        <e-button disabled>禁用按钮</e-button>
     </div>
 </template>
 
 <script lang='ts'>
-  import Button from '../../../src/button.vue'
+  import Button from '../../../src/button.vue';
+
   export default {
-    components:{
-      'e-button':Button
+    data() {
+      return {
+        loading: true
+      };
     },
-    mounted(){
-      console.log(Button)
-    }
-  }
+    components: {
+      'e-button': Button
+    },
+    mounted() {
+      console.log(Button);
+    },
+
+  };
 </script>
 
 <style lang="scss" scoped>
