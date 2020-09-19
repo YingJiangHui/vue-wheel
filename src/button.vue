@@ -1,5 +1,6 @@
 <template>
-    <button @click="$emit('click')" class="w-button" name="todo" :class="{[`icon-${iconPosition}`]: true}">
+    <button @click="onClick" class="eagle-button" name="todo" :disabled="disabled"
+            :class="{[`icon-${iconPosition}`]: true}">
         <template>
             <w-icon class="icon" :name="icon" v-if="icon && !loading"/>
         </template>
@@ -14,9 +15,14 @@
 
 <script lang='ts'>
   import Icon from './Icon.vue';
+
   export default {
-    name:"WButton",
+    name: "EagleButton",
     props: {
+      disabled: {
+        type: Boolean,
+        default: false
+      },
       icon: {
         type: String
       },
@@ -32,6 +38,12 @@
         default: false,
       }
     },
+    methods: {
+      onClick() {
+        if (!this.disabled)
+          this.$emit('click');
+      }
+    },
     components: {
       'w-icon': Icon
     }
@@ -44,9 +56,9 @@
     $border-color: #999;
     $button-active-bg: #eee;
     $button-hover-color: #666;
-    $font-size:14px;
-    $button-height:32px;
-    $color:#333;
+    $font-size: 14px;
+    $button-height: 32px;
+    $color: #333;
     $button-bg: #fff;
     @keyframes spin {
         0% {
@@ -57,7 +69,8 @@
         }
     }
 
-    .w-button {
+    .eagle-button {
+
         vertical-align: middle;
 
         & {
@@ -74,17 +87,20 @@
         border: 1px solid $border-color;
         background: $button-bg;
 
-        &:hover {
-            color: $button-hover-color;
+        &:not([disabled]) {
+            &:hover {
+                color: $button-hover-color;
+            }
+
+            &:active {
+                background: $button-active-bg;
+            }
+
+            &:focus {
+                outline: none;
+            }
         }
 
-        &:active {
-            background: $button-active-bg;
-        }
-
-        &:focus {
-            outline: none;
-        }
 
         & > .loading {
             animation: spin 1.2s infinite linear;
