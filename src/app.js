@@ -17,6 +17,10 @@ import TabsItem from './tabs-item'
 import TabsPane from './tabs-pane'
 import Tabs from './tabs'
 import Popover from './popover'
+import Collspse from './collapse'
+import CollspseItem from './collapse-item'
+
+
 Vue.component('w-button', Button)
 Vue.component('w-button-group', ButtonGroup)
 Vue.component('w-input', Input)
@@ -34,12 +38,14 @@ Vue.component('e-tabs-item', TabsItem)
 Vue.component('e-tabs-pane', TabsPane)
 Vue.component('e-tabs', Tabs)
 Vue.component('e-popover', Popover)
+Vue.component('e-collapse',Collspse)
+Vue.component('e-collapse-item',CollspseItem)
 
 Vue.use(plugin)
 new Vue({
     data() {
         return {
-            selectedTab:'sports'
+            selectedTab:['1']
         }
     },
     methods: {
