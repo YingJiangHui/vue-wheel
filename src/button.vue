@@ -14,7 +14,6 @@
 
 <script lang='ts'>
   import Icon from './Icon.vue';
-
   export default {
     name:"WButton",
     props: {
@@ -41,6 +40,14 @@
 </script>
 
 <style lang="scss" scoped>
+    $border-radius: 4px;
+    $border-color: #999;
+    $button-active-bg: #eee;
+    $button-hover-color: #666;
+    $font-size:14px;
+    $button-height:32px;
+    $color:#333;
+    $button-bg: #fff;
     @keyframes spin {
         0% {
             transform: rotate(0);
@@ -60,19 +67,19 @@
         }
 
         font: inherit;
-        font-size: var(--font-size);
-        height: var(--button-height);
+        font-size: $font-size;
+        height: $button-height;
         padding: 0 1em;
-        border-radius: var(--border-radius);
-        border: 1px solid var(--border-color);
-        background: var(--button-bg);
+        border-radius: $border-radius;
+        border: 1px solid $border-color;
+        background: $button-bg;
 
         &:hover {
-            color: var(--button-hover-color);
+            color: $button-hover-color;
         }
 
         &:active {
-            background: var(--button-active-bg);
+            background: $button-active-bg;
         }
 
         &:focus {
