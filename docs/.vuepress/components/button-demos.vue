@@ -5,12 +5,15 @@
 </template>
 
 <script lang='ts'>
-import Button from '../../../src/button'
-export default {
-  components:{
-    'e-button':Button
+  import Button from '../../../src/button.vue'
+  export default {
+    components:{
+      'e-button':Button
+    },
+    mounted(){
+      console.log(Button)
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped>
