@@ -45,7 +45,7 @@ Vue.use(plugin)
 new Vue({
     data() {
         return {
-            selectedTab:['1']
+            selectedTab:[]
         }
     },
     methods: {
