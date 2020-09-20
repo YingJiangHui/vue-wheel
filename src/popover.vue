@@ -37,6 +37,12 @@
     mounted() {
       this.mountEventListener();
     },
+    beforeDestroy(){
+      this.visible = false;
+      if(this.$refs.contentWrapper){
+        this.$refs.contentWrapper.remove()
+      }
+    },
     destroyed() {
       //使用vue的事件系统时vue会帮助我们做这一步，
       // 使用原生的事件系统需要手动去除监听
@@ -48,6 +54,7 @@
       }
     },
     methods: {
+
       mountEventListener() {
         const {trigger} = this.$refs;
         if (this.trigger === 'click') {
@@ -72,22 +79,23 @@
         document.body.appendChild(contentWrapper);
         const {left, top, width, height} = popover.getBoundingClientRect();
         const {height: height2} = contentWrapper.getBoundingClientRect();
+
         const positions = {
           'top': {
-            left: left + window.screenX,
-            top: top + window.screenY
+            left: left + window.scrollX,
+            top: top + window.scrollY
           },
           'bottom': {
-            left: left + window.screenX,
-            top: top + window.screenY
+            left: left + window.scrollX,
+            top: top + window.scrollY
           },
           'left': {
-            left: left + window.screenX,
-            top: top + window.screenY + (height - height2) / 2
+            left: left + window.scrollX,
+            top: top + window.scrollY + (height - height2) / 2
           },
           'right': {
-            left: left + window.screenX + width,
-            top: top + window.screenY + (height - height2) / 2
+            left: left + window.scrollX + width,
+            top: top + window.scrollY + (height - height2) / 2
           },
         };
         contentWrapper.style.left = positions[this.position]['left'] + 'px';
@@ -182,7 +190,6 @@
         filter: drop-shadow(0 -0.5px 1px $shadow);
 
         transform: translateY(100%);
-        margin-top: -10px;
 
         &::before, &::after {
             left: 10px;
