@@ -1,5 +1,5 @@
 <template>
-    <svg class="w-icon">
+    <svg class="eagle-icon">
         <use :xlink:href="`#i-${name}`"></use>
     </svg>
 </template>
@@ -8,7 +8,7 @@
   import './svg.js';
 
   export default {
-    name:'WIcon',
+    name:'eagleIcon',
     props: {
       name: {
         type: String
@@ -19,7 +19,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .w-icon {
+    .eagle-icon {
         width: 1em;
         height: 1em;
     }

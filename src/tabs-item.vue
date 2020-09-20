@@ -50,7 +50,7 @@
 <style lang="scss" scoped>
     $color:dodgerblue;
     .eagle-tabs-item {
-        .w-icon{
+        .eagle-icon{
             padding-right: .3em;
         }
         & {
@@ -62,7 +62,7 @@
         }
 
         &.active {
-            .w-icon{
+            .eagle-icon{
                 fill:$color;
             }
             color: $color;

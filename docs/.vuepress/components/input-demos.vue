@@ -6,7 +6,7 @@
         </div>
 
         <div class="box">
-            <e-input error="错误" value="报错输入框"></e-input>
+            <e-input error="错误信息" value="报错输入框"></e-input>
         </div>
         <div class="box">
 
@@ -15,7 +15,11 @@
         <div class="box">
             <e-input readonly value="readonly"></e-input>
         </div>
-
+        <div class="box">
+            <e-input v-model="value"></e-input>
+        </div>
+        <br>
+        value:{{value}}
     </div>
 </template>
 
@@ -25,6 +29,11 @@
   export default {
     components: {
       'e-input': Input
+    },
+    data(){
+      return{
+        value:'双向绑定'
+      }
     }
   };
 </script>

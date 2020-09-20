@@ -2,10 +2,10 @@
     <button @click="onClick" class="eagle-button" name="todo" :disabled="disabled"
             :class="{[`icon-${iconPosition}`]: true}">
         <template>
-            <w-icon class="icon" :name="icon" v-if="icon && !loading"/>
+            <e-icon class="icon" :name="icon" v-if="icon && !loading"/>
         </template>
         <template>
-            <w-icon class="icon loading" name="loading" v-if="loading"/>
+            <e-icon class="icon loading" name="loading" v-if="loading"/>
         </template>
         <div class="content">
             <slot></slot>
@@ -45,7 +45,7 @@
       }
     },
     components: {
-      'w-icon': Icon
+      'e-icon': Icon
     }
   };
 

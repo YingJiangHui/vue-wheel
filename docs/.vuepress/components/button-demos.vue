@@ -20,10 +20,6 @@
     components: {
       'e-button': Button
     },
-    mounted() {
-      console.log(Button);
-    },
-
   };
 </script>
 

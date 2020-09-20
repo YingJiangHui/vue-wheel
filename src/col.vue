@@ -18,7 +18,7 @@
     return valid;
   };
   export default {
-    name: 'WCol',
+    name: 'EagleCol',
     props: {
       span: {
         type: [String, Number]

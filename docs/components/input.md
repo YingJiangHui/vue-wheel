@@ -13,16 +13,17 @@ title：Input - 输入框
 ## 示例
 ```html
 <e-input value="默认"></e-input>
-<e-input error="错误" value="报错输入框"></e-input>
+<e-input error="报错信息" value="报错输入框"></e-input>
 <e-input disabled value="disable"></e-input>
 <e-input readonly value="readonly"></e-input>
+<e-input v-model="value"></e-input>
 ```
 
 ## 选项
 
 ### 1. 错误提示
 
-使用`error`属性将输入框作为报错输入框接收报错信息作为参数
+使用`error`属性将输入框作为报错输入框，接收报错信息作为参数
 
 参数：`String`
 

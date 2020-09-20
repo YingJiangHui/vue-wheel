@@ -10,7 +10,7 @@
                :value="value"
                :class="{error}">
         <template v-if="error">
-            <w-icon name="error" class="icon-error"></w-icon>
+            <e-icon name="error" class="icon-error"></e-icon>
             <span class="error-message">{{error}}</span>
         </template>
     </div>
@@ -19,9 +19,9 @@
 <script lang='ts'>
   import Icon from './Icon.vue';
   export default {
-    name: 'WInput',
+    name: 'EagleInput',
     components:{
-      'w-icon':Icon
+      'e-icon':Icon
     },
     props: {
       value: {

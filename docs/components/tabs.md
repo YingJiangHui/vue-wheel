@@ -34,7 +34,7 @@ title: Tabs - 选择面板
 
 ## 选项
 
-### 1. name
+### 1. name(必填)
 你需要为每个item与pane提供对用的`name`属性作为标记，并且需要保证提供的值必须是唯一的
 
 参数：`Number | String` 
@@ -42,3 +42,9 @@ title: Tabs - 选择面板
 使用`disable`禁用某一项
 
 参数：`Boolean`
+
+### 3. 默认选中
+
+在 e-tabs 组件上使用 `selected=name` 设置默认选中的tab
+
+参数：`String`

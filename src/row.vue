@@ -1,12 +1,12 @@
 <template>
-    <div class="row" :style="getGutter" :class="getAlign">
+    <div class="eagle-row" :style="getGutter" :class="getAlign">
         <slot></slot>
     </div>
 </template>
 
 <script lang='ts'>
   export default {
-    name: 'WRow',
+    name: 'EagleRow',
     props:{
       gutter:{
         type:[String,Number]
@@ -35,7 +35,7 @@
 </script>
 
 <style lang="scss" scoped>
-.row{
+.eagle-row{
     display: flex;
     &.align-left{
         justify-content: flex-start;

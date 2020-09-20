@@ -14,7 +14,7 @@ title: Toast - 提示框
 
 ## 示例
 
-使用toast非常方便，只需要将插件挂载到 `Vue` 上，就可以使用 `this.$toast` 方法调用即可呼出toast弹窗
+使用 toast 非常方便，只需要将插件挂载到 Vue 上，就可以使用 `this.$toast()` 方法呼出 toast 弹窗
 
 ``` vue{18,31,35-37,41-43,47-50,55-59,65-67}
 
@@ -114,11 +114,11 @@ title: Toast - 提示框
 
 使用 `closeButton` 设置关闭按钮的文字，及回调函数
 
-参数：{text:'知道了',callback:(vm)=>{}}
+参数：`{text: String,callback: (vm)=>{}}`
 
-默认：{text:'关闭',callback:undefined}
+默认：`{text: '关闭',callback: undefined}`
 
-将`text`设置为空时不出现关闭按钮。
+将 `text` 设置为空时不出现关闭按钮。
 
 
 ### 4. 解析HTML代码
