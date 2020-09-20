@@ -49,6 +49,9 @@ new Vue({
         }
     },
     methods: {
+    },
+    mounted(){
+        this.$toast('message')
     }
 }).$mount('#app')
 

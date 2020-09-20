@@ -1,20 +1,20 @@
 <template>
     <div class="col" :class="getSpan"
          :style="getGutter">
-        <div style="border: 1px solid green; height: 100px;">
             <slot></slot>
-        </div>
     </div>
 </template>
 <script lang='ts'>
   const validator = (value) => {
     let keys = Object.keys(value);
+
     let valid = true;
     keys.forEach(item => {
-      if (!['offset', 'span'].indexOf(item)>=0) {
+      if (['offset', 'span'].indexOf(item)===-1) {
         valid = false;
       }
     });
+
     return valid;
   };
   export default {
@@ -64,7 +64,7 @@
         ];
       },
       getGutter() {
-        return {paddingLeft: this.gutter / 2 + 'px', paddingRight: this.gutter / 2 + 'px'};
+        return {marginLeft: this.gutter / 2 + 'px', marginRight: this.gutter / 2 + 'px'};
       }
     }
   };
@@ -73,7 +73,6 @@
 
 <style lang="scss" scoped>
     .col {
-        height: 100px;
         width: 100%;
         $class-prefix: 'col-';
         @for $n from 1 through 24 {

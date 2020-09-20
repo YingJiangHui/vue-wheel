@@ -1,13 +1,15 @@
 <template>
     <div class="wrapper" :class="totalClass">
-        <div class="eagle-toast" ref="toast">
-            <div class="content">
-                <div v-if="enableHtml" class="slots" v-html="$slots.default[0]"></div>
-                <slot v-else></slot>
+        <transition name="slide">
+            <div class="eagle-toast" ref="toast">
+                <div class="content">
+                    <div v-if="enableHtml" class="slots" v-html="$slots.default[0]"></div>
+                    <slot v-else></slot>
+                </div>
+                <div class="line" ref="line" v-if="closeButton"></div>
+                <span class="close" ref="closeButton" @click="closeToast" v-if="closeButton">{{closeButton.text}}</span>
             </div>
-            <div class="line" ref="line" v-if="closeButton"></div>
-            <span class="close" ref="closeButton" @click="closeToast" v-if="closeButton">{{closeButton.text}}</span>
-        </div>
+        </transition>
     </div>
 
 </template>
@@ -102,6 +104,7 @@
     $border-radius: 4px;
     $bg-color: rgba(0, 0, 0, 0.75);
     .wrapper {
+        z-index: 999;
         position: fixed;
         left: 50%;
         transform: translateX(-50%);
