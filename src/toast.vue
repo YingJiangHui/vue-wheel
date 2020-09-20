@@ -1,15 +1,13 @@
 <template>
     <div class="wrapper" :class="totalClass">
-        <transition name="slide">
-            <div class="eagle-toast" ref="toast">
-                <div class="content">
-                    <div v-if="enableHtml" class="slots" v-html="$slots.default[0]"></div>
-                    <slot v-else></slot>
-                </div>
-                <div class="line" ref="line" v-if="closeButton"></div>
-                <span class="close" ref="closeButton" @click="closeToast" v-if="closeButton">{{closeButton.text}}</span>
+        <div class="eagle-toast" ref="toast">
+            <div class="content">
+                <div v-if="enableHtml" class="slots" v-html="$slots.default[0]"></div>
+                <slot v-else></slot>
             </div>
-        </transition>
+            <div class="line" ref="line" v-if="closeButton.text"></div>
+            <span class="close" ref="closeButton" @click="closeToast" v-if="closeButton.text">{{closeButton.text}}</span>
+        </div>
     </div>
 
 </template>
@@ -62,12 +60,14 @@
           }, this.autoCloseDelay * 1000);
       },
       setElementHeight() {
-
-        const toastHeight = this.$refs.toast.getBoundingClientRect().height + 'px';
         this.$nextTick(() => {
+          const{toast,line,closeButton}  = this.$refs
+          if(toast&&line&&closeButton){
+            const toastHeight = toast.getBoundingClientRect().height + 'px';
+            this.$refs.line.style.height = toastHeight;
+            this.$refs.closeButton.style.height = toastHeight;
+          }
 
-          this.$refs.line.style.height = toastHeight;
-          this.$refs.closeButton.style.height = toastHeight;
         });
       },
       close() {
@@ -100,6 +100,10 @@
         0% {opacity: 0; transform: translateY(-100%);}
         100% {opacity: 1;transform: translateY(0);}
     }
+    @keyframes fade {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+    }
 
     $border-radius: 4px;
     $bg-color: rgba(0, 0, 0, 0.75);
@@ -113,6 +117,8 @@
             top: 0;
 
             .eagle-toast {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
                 animation: slide-down .3s linear;
             }
         }
@@ -122,14 +128,15 @@
             transform: translateY(-50%) translateX(-50%);
 
             .eagle-toast {
-                animation: slide-up .3s linear;
+                animation: fade .3s linear;
             }
         }
 
         &.toast-bottom {
             bottom: 0;
-
             .eagle-toast {
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
                 animation: slide-up .3s linear;
             }
         }
@@ -150,8 +157,8 @@
         }
 
         > .line {
-            width: 1px;
-            background-color: #fff;
+            width: .5px;
+            background-color: rgba(255,255,255,.6);
         }
 
         > .close {
