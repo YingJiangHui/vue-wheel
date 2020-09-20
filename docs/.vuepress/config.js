@@ -21,9 +21,15 @@ module.exports = {
                     '/components/popover',
                 ]
             },
+        ],
+        nav: [
+            { text: '主页', link: '/' },
+            { text: '快速安装', link: '/install/' },
+            { text: 'GitHub', link: 'https://google.com' },
         ]
     },
     markdown: {
         lineNumbers: true
-    }
+    },
+
 }
