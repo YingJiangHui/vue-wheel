@@ -7,8 +7,8 @@ title: 快速上手
 ## 资源
 
 ```js
-import {Button} from 'eagle-ui'
-import "eagle-ui/dist/index.css";
+import {Button} from 'eagle-ui-lib'
+import "eagle-ui-lib/dist/index.css";
 ```
 
 ## 注册组件
@@ -26,7 +26,7 @@ export default {
 ```html
 <template>
     <div>
-        <e-button></e-button>
+        <e-button>按钮</e-button>
     </div>
 </template>
 ```
@@ -35,4 +35,4 @@ export default {
 
 <br>
 
-<button-demos/>
+<start/>

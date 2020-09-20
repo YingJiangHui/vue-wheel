@@ -1,4 +1,5 @@
 module.exports = {
+    base:'/eagle-ui-docs/',
     title: 'Eagle UI',
     description: '一个好用的UI框架',
     themeConfig: {
