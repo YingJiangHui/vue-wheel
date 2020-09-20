@@ -83,7 +83,8 @@ title: Grid - 栅格
 ### 示例
 提供了iPhone、ipad、narrow pc、pc、wide pc 五个尺寸
 
-参数：`{span,offset}`
+参数：`{span: String | Number, offset: String | Number}`
+
 ```html
 <e-row gutter="10">
     <e-col 
@@ -96,8 +97,10 @@ title: Grid - 栅格
     <e-col :iphone="{span:2}" :ipad="{span:8}" :narrow-pc="{span:12}":pc="{span:16}" :wide-pc="{span:20}" class="blue"></e-col>
 </e-row>
 ```
-
-## 间隙
+:::tip
+设置了五个尺寸之后在设置的`span`将失效
+:::
+## 裂缝
 用于`gutter`设置列与列之间的间隙
 
 参数：`String | Number`
@@ -105,3 +108,5 @@ title: Grid - 栅格
 ```html
 <e-row gutter="10"></e-row>
 ```
+
+设置网格之间的间隙为10像素

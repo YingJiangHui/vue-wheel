@@ -4,7 +4,7 @@ title: Collapse - 折叠框
 
 # Collapse - 折叠框
 
-## 默认折叠框
+## 折叠框
 ### 预览
 
 <br>
@@ -63,7 +63,7 @@ title: Collapse - 折叠框
 
 参数：`String | Number`
 
-#### 4. 手风琴
+## 手风琴
 `collapse`组件中使用`single`属性设置同一时刻仅展示一项。
 
 参数：`Boolean`

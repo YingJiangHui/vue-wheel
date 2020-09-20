@@ -64,7 +64,8 @@
         ];
       },
       getGutter() {
-        return {marginLeft: this.gutter / 2 + 'px', marginRight: this.gutter / 2 + 'px'};
+        if(this.gutter>0)
+            return {marginLeft: this.gutter / 2 + 'px', marginRight: this.gutter / 2 + 'px'};
       }
     }
   };

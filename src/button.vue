@@ -99,7 +99,9 @@
                 outline: none;
             }
         }
-
+        &[disabled]{
+            cursor: not-allowed;
+        }
 
         & > .loading {
             animation: spin 1.2s infinite linear;
