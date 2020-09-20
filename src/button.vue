@@ -70,10 +70,9 @@
     }
 
     .eagle-button {
-
-        vertical-align: middle;
-
         & {
+            vertical-align: middle;
+            cursor: pointer;
             display: inline-flex;
             justify-content: center;
             align-items: center;

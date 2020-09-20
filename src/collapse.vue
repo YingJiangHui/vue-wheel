@@ -11,7 +11,8 @@
     name: 'EagleCollapse',
     props: {
       selected: {
-        type: Array
+        type: Array,
+        require:true
       },
       single: {
         type: Boolean,

@@ -15,7 +15,8 @@
     name: 'EagleCollapseItem',
     props: {
       name: {
-        type: [String, Number]
+        type: [String, Number],
+        require:true
       },
       title: {
         type: String,
@@ -64,6 +65,9 @@
 
     .collapse-item {
         > .title {
+            z-index: 1;
+            position: relative;
+            cursor: pointer;
             border: 1px solid $border-color;
             margin-top: -1px;
             margin-left: -1px;
