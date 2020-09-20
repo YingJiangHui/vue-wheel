@@ -1,6 +1,6 @@
 {
   "name": "ying-wheel-1",
-  "version": "0.0.2",
+  "version": "0.0.91",
   "description": "vue UI框架",
   "main": "dist/index.js",
   "scripts": {
