@@ -1,5 +1,5 @@
 <template>
-    <div class="col" :class="getSpan"
+    <div class="eagle-col" :class="getSpan"
          :style="getGutter">
             <slot></slot>
     </div>
@@ -73,7 +73,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .col {
+    .eagle-col {
         width: 100%;
         $class-prefix: 'col-';
         @for $n from 1 through 24 {

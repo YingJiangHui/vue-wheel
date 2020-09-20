@@ -29,7 +29,7 @@
 
 <style lang="scss" scoped>
 
-    .col{
+    .eagle-col{
         height: 50px;
         display: flex;
         justify-content: center;align-items: center;
@@ -39,7 +39,7 @@
         }
 
     }
-    .row{
+    .eagle-row{
         margin-bottom: 10px;
     }
 </style>

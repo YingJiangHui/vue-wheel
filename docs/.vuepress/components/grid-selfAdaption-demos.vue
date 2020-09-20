@@ -23,7 +23,7 @@
 
 <style lang="scss" scoped>
 
-    .col {
+    .eagle-col {
         transition: .2s;
         height: 50px;
         display: flex;
@@ -36,7 +36,7 @@
 
     }
 
-    .row {
+    .eagle-row {
         margin-bottom: 10px;
     }
 </style>

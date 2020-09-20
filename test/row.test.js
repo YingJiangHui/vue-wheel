@@ -12,30 +12,31 @@ describe('Row', () => {
     })
 
     it('接收 gutter 属性.', (done) => {
-        Vue.component('g-row', Row)
-        Vue.component('g-col', Col)
+        Vue.component('e-row', Row)
+        Vue.component('e-col', Col)
         const div = document.createElement('div')
         document.body.appendChild(div)
         div.innerHTML = `
-      <g-row gutter="20">
-        <g-col span="12"></g-col>
-        <g-col span="12"></g-col>
-      </g-row>
+      <e-row gutter="20">
+        <e-col span="12"></e-col>
+        <e-col span="12"></e-col>
+      </e-row>
     `
         const vm = new Vue({
             el: div
         })
         setTimeout(() => {
-            const row = vm.$el.querySelector('.row')
+
+            const row = vm.$el.querySelector('.eagle-row')
             expect(getComputedStyle(row).marginRight).to.eq('-10px')
             expect(getComputedStyle(row).marginLeft).to.eq('-10px')
-            const cols = vm.$el.querySelectorAll('.col')
+            const cols = vm.$el.querySelectorAll('.eagle-col')
             expect(getComputedStyle(cols[0]).marginLeft).to.eq('10px')
             expect(getComputedStyle(cols[1]).marginLeft).to.eq('10px')
             done()
             vm.$el.remove()
             vm.$destroy()
-        })
+        },0)
     })
 
     it('接收align属性', () => {

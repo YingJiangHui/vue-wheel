@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.col{
+.eagle-col{
     height: 50px;
     display: flex;
     justify-content: center;align-items: center;
@@ -49,7 +49,7 @@ export default {
     }
 
 }
-    .row{
+    .eagle-row{
         margin-bottom: 10px;
     }
 </style>
