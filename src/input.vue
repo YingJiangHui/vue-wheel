@@ -47,8 +47,8 @@
     $font-size: 14px;
     $border-color: #999;
     $border-radius: 4px;
-    $border-hover-color: #666;
-    $shadow-color: rgba(0, 0, 0, 0.25);
+    $border-hover-color: #40a9ff;
+    $shadow-color: rgba(#40a9ff, 0.25);
     $error-color: #F1453D;
     $shadow-error-color: rgba(255, 0, 0, .2);
     $disable-color: #bbb;
@@ -58,9 +58,8 @@
         > input {border-radius: $border-radius;height: 32px;font-size: inherit;padding: 0 8px;
             outline: none;border: 1px solid $border-color;transition: box-shadow .25s;
 
-            &:hover {border-color: $border-hover-color;}
+            &:focus {border-color: $border-hover-color;box-shadow: 0 0 0 4px $shadow-color;}
 
-            &:focus {box-shadow: 0 0 0 4px $shadow-color;}
 
             &[disabled], &[readonly] {color: $disable-color;border-color: $disable-color;cursor: not-allowed;
 
