@@ -27,7 +27,7 @@
 <style lang="scss" scoped>
     .eagle-tabs-head {
 
-        border: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
         height: 48px;
         display: flex;
         align-items: center;
@@ -40,7 +40,7 @@
         > .line {
             transition: all .2s;
             left: 0;
-            bottom: 0;
+            bottom: -1px;
             position: absolute;
             height: 2px;
             background: dodgerblue;
