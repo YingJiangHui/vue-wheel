@@ -66,15 +66,7 @@ title: Button - 按钮
 </e-button-group>
 ```
 
-## 如何使用更多图标
 
-按钮提供的图标数量有限自定较差，推荐自行导入图标。进入[iconfont](https://www.iconfont.cn/)网站
-
-1. 需要将项目用到的svg前缀名改为 `i-` 。如：你需要一个名为star的图标，则它的全名称应该为：`i-star`
-
-2. 使用Symbol模式生成图标链接，将链接引入`public/index.html`。
-
-3. 使用时只需要输入后缀即可，如 `icon: 'star'`
 
 
 
