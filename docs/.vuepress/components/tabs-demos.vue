@@ -3,7 +3,7 @@
         <div class="box">
             <e-tabs selected="sports">
                 <e-tabs-head>
-                    <e-tabs-item name="sports"><e-icon name="zan"></e-icon>体育</e-tabs-item>
+                    <e-tabs-item name="sports"><e-icon name="setting"></e-icon>体育</e-tabs-item>
                     <e-tabs-item name="finance" disabled>财经</e-tabs-item>
                     <e-tabs-item name="lean">学习</e-tabs-item>
                     <e-tabs-item name="military">军事</e-tabs-item>
